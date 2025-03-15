@@ -13,9 +13,9 @@ public class Ejercicio2 {
             }
         }
         if (contador == word.length()) {
-            System.out.println("YES");
+            System.out.println("Palíndromo");
         } else {
-            System.out.println("NO");
+            System.out.println("No es palindromo");
         }
     }
 }

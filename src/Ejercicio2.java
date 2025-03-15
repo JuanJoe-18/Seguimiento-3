@@ -1,21 +1,27 @@
 import java.util.Scanner;
 
 public class Ejercicio2 {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        String word = sc.nextLine();
-        int contador = 0;
-        for (int h = 0; h < word.length(); h++) {
-            if (word.charAt(h) == word.charAt((word.length() - 1) - h)) {
-                contador += 1;
+        System.out.println("Digite la palabra:");
+        String word=sc.nextLine();
+        int contador=0;
+        for (int h = 0; h<word.length(); h++){
+            if (word.charAt(h) == word.charAt((word.length()-1)-h)){
+                contador+=1;
             } else {
-                contador += 2;
-            }
+                contador +=2;    
+            }  
         }
-        if (contador == word.length()) {
-            System.out.println("Palíndromo");
+        if (contador==word.length()){
+            System.out.println("Palindromo");
         } else {
             System.out.println("No es palindromo");
-        }
-    }
+     }
+     }   
 }
+
+
+
+
+

@@ -43,27 +43,25 @@ public class Ejercicio1 {
 
 ### Tabla de Costos:
 
-| Línea | Código | Veces que se ejecuta |
-|--------|--------|----------------------|
-| 1 | `Scanner rd = new Scanner(System.in);` | 1 |
-| 2 | `String input = rd.nextLine();` | 1 |
-| 3 | `String[] inputArray = input.split(",");` | 1 |
-| 4 | `List<Integer> numbers = new ArrayList<>();` | 1 |
-| 5 | `for (String s : inputArray)` | n |
-| 6 | `numbers.add(Integer.parseInt(s.trim()));` | n - 1 |
-| 7 | `Set<Integer> result = new HashSet<>();` | 1 |
-| 8 | `for (int i = 1; i < n; i++)` | n |
-| 9 | `if (list.get(i).equals(list.get(i - 1)))` | n - 1 |
-| 10 | `result.add(list.get(i));` | n - 1 |
-| 11 | `return result;` | 1 |
+| Línea | Código                                        | Veces que se ejecuta |
+| ------ | ---------------------------------------------- | -------------------- |
+| 1      | `Scanner rd = new Scanner(System.in);`       | 1                    |
+| 2      | `String input = rd.nextLine();`              | 1                    |
+| 3      | `String[] inputArray = input.split(",");`    | 1                    |
+| 4      | `List<Integer> numbers = new ArrayList<>();` | 1                    |
+| 5      | `for (String s : inputArray)`                | n + 1                |
+| 6      | `numbers.add(Integer.parseInt(s.trim()));`   | n                    |
+| 7      | `Set<Integer> result = new HashSet<>();`     | 1                    |
+| 8      | `for (int i = 1; i < n; i++)`                | n + 1                |
+| 9      | `if (list.get(i).equals(list.get(i - 1)))`   | n                    |
+| 10     | `result.add(list.get(i));`                   | n                    |
+| 11     | `return result;`                             | 1                    |
 
 ### Cálculo de $T(n)$
 
-$ T(n) = 1 + 1 + 1 + 1 + n + (n-1) + 1 + n + (n-1) + (n-1) + 1 $
+$ T(n) = 1 + 1 + 1 + 1 + (n+1) + n + 1 + (n+1) + n + n + 1 $
 
-$ T(n) = 4 + 3n - 2 + 3n - 3 = 6n - 1 $
-
-Por lo tanto, $T(n) = O(n)$.
+$ T(n) =5n+8 $
 
 ---
 
@@ -94,18 +92,21 @@ public class Ejercicio2 {
 
 ### Tabla de Costos:
 
-| Línea | Código | Veces que se ejecuta |
-|--------|--------|----------------------|
-| 1 | `Scanner sc = new Scanner(System.in);` | 1 |
-| 2 | `System.out.println("Digite la palabra:");` | 1 |
-| 3 | `String word=sc.nextLine();` | 1 |
-| 4 | `int contador=0;` | 1 |
-| 5 | `for (int h = 0; h<word.length(); h++)` | n |
-| 6 | `if (word.charAt(h) == word.charAt((word.length()-1)-h))` | n - 1 |
-| 7 | `contador+=1;` / `contador +=2;` | n - 1 |
-| 8 | `System.out.println("Palindromo");` / `System.out.println("No es palindromo");` | 1 |
+| Línea | Código                                                                             | Veces que se ejecuta |
+| ------ | ----------------------------------------------------------------------------------- | -------------------- |
+| 1      | `Scanner sc = new Scanner(System.in);`                                            | 1                    |
+| 2      | `System.out.println("Digite la palabra:");`                                       | 1                    |
+| 3      | `String word=sc.nextLine();`                                                      | 1                    |
+| 4      | `int contador=0;`                                                                 | 1                    |
+| 5      | `for (int h = 0; h<word.length(); h++)`                                           | n + 1                |
+| 6      | `if (word.charAt(h) == word.charAt((word.length()-1)-h))`                         | n                    |
+| 7      | `contador+=1;` / `contador +=2;`                                                | n                    |
+| 8      | `if (contador==word.length())`                                                    | 1                    |
+| 9      | `System.out.println("Palindromo");` / `System.out.println("No es palindromo");` | 1                    |
 
-Por lo tanto, $T(n) = O(n)$.
+$T(n)= 1 + 1 + 1 + 1 + (n+1) + n + n + 1 + 1 $
+
+$T(n)= 3n+7 $
 
 ---
 
@@ -132,22 +133,24 @@ public class Ejercicio3 {
 
 ### Tabla de Costos:
 
-| Línea | Código | Veces que se ejecuta |
-|--------|--------|----------------------|
-| 1 | `Scanner rd = new Scanner(System.in);` | 1 |
-| 2 | `String bitString = rd.nextLine();` | 1 |
-| 3 | `System.out.println(bitCounter(bitString));` | 1 |
-| 4 | `int bitcounter = 0;` | 1 |
-| 5 | `for (int i = 0; i < bits.length(); i++)` | n |
-| 6 | `if (bits.charAt(i)=='1')` | n - 1 |
-| 7 | `bitcounter++;` | n - 1 |
-| 8 | `return bitcounter;` | 1 |
+| Línea | Código                                        | Veces que se ejecuta |
+| ------ | ---------------------------------------------- | -------------------- |
+| 1      | `Scanner rd = new Scanner(System.in);`       | 1                    |
+| 2      | `String bitString = rd.nextLine();`          | 1                    |
+| 3      | `System.out.println(bitCounter(bitString));` | 1                    |
+| 4      | `int bitcounter = 0;`                        | 1                    |
+| 5      | `for (int i = 0; i < bits.length(); i++)`    | n + 1                |
+| 6      | `if (bits.charAt(i)=='1')`                   | n                    |
+| 7      | `bitcounter++;`                              | n                    |
+| 8      | `return bitcounter;`                         | 1                    |
 
-Por lo tanto, $T(n) = O(n)$.
+$T(n)= 1 + 1 + 1 + 1 + (n+1) + n + n + 1 $
+
+$T(n)= 3n+6 $
 
 ---
 
-# Análisis de Complejidad Temporal y Espacial
+# Análisis de Complejidad Temporal 
 
 ## Enunciado
 
@@ -161,27 +164,26 @@ mediante una constante $c$ que permita acotar por arriba la función encontrada.
 A continuación, se presenta el análisis de la complejidad temporal, así como la cota superior asintótica.
 
 ---
+
 ## **Algoritmo 1 (Búsqueda de Números Repetidos)**
 
-### Cálculo de $T(n)$
+### Sabemos que:
 
-$T(n) = 1 + 1 + 1 + 1 + n + (n-1) + 1 + n + (n-1) + (n-1) + 1$
+$ T_1(n) = 5n + 8$
 
-$T(n) = 4 + 3n - 2 + 3n - 3 = 6n - 1$
+##### Queremos probar que:
 
-Queremos probar que:
-
-$6n - 1 = O(n)$
+$5n + 8 = O(n)$
 
 Siguiendo el procedimiento de la cota asintótica:
 
-$6n - 1 \leq c \cdot n, \forall n \geq n_0$
+$5n+8 \leq c \cdot n,\quad \forall n \geq n_0$
 
 Dividimos por $n$:
 
-$6 - \frac{1}{n} \leq c$
+$5 + \frac{8}{n} \leq c$
 
-Para $n \geq 1$, tomamos $c = 6$, $n_0 = 1$, por lo que:
+Para $n \geq 1$, tomamos $c = 13$, $n_0 = 1$, por lo que:
 
 $T(n) = O(n)$
 
@@ -189,25 +191,23 @@ $T(n) = O(n)$
 
 ## **Algoritmo 2 (Verificación de Palíndromo)**
 
-### Cálculo de $T(n)$
+### **Sabemos que:**
 
-$T(n) = 1 + 1 + 1 + 1 + n + (n-1) + (n-1) + (n-1) + 1 + 1 + 1$
+$T_2(n) = 3n + 7$
 
-$T(n) = 6 + 4n - 3 = 4n + 3$
+##### Queremos probar que:
 
-Queremos probar que:
-
-$4n + 3 = O(n)$
+$3n + 7 = O(n)$
 
 Siguiendo el procedimiento de la cota asintótica:
 
-$4n + 3 \leq c \cdot n, \forall n \geq n_0$
+$3n + 7 \leq c \cdot n, \forall n \geq n_0$
 
 Dividimos por $n$:
 
-$4 + \frac{3}{n} \leq c$
+$3 + \frac{7}{n} \leq c$
 
-Para $n \geq 1$, tomamos $c = 5$, $n_0 = 1$, por lo que:
+Para $n \geq 1$, tomamos $c = 10$, $n_0 = 1$, por lo que:
 
 $T(n) = O(n)$
 
@@ -215,29 +215,24 @@ $T(n) = O(n)$
 
 ## **Algoritmo 3 (Contador de Bits)**
 
-### Cálculo de $T(n)$
+### **Sabemos que:**
 
-$T(n) = 1 + 1 + 1 + n + (n-1) + (n-1) + 1$
+$T_3(n) = 3n + 6 $
 
-$T(n) = 4 + 3n - 2 = 3n + 2$
+##### Queremos probar que:
 
-Queremos probar que:
-
-$3n + 2 = O(n)$
+$3n + 6 = O(n)$
 
 Siguiendo el procedimiento de la cota asintótica:
 
-$3n + 2 \leq c \cdot n, \forall n \geq n_0$
+$3n + 6 \leq c \cdot n, \forall n \geq n_0$
 
 Dividimos por $n$:
 
-$3 + \frac{2}{n} \leq c$
+$3 + \frac{6}{n} \leq c$
 
-Para $n \geq 1$, tomamos $c = 4$, $n_0 = 1$, por lo que:
+Para $n \geq 1$, tomamos $c = 9$, $n_0 = 1$, por lo que:
 
 $T(n) = O(n)$
 
-
-
-
-
+---

@@ -31,8 +31,8 @@ public class Ejercicio1 {
     private static Set<Integer> findRepeatedValues(List<Integer> list) {
         Set<Integer> result = new HashSet<>();
         int n = list.size();
-        for (int i = 1; i < n; i++) { // Se ejecuta n veces
-            if (list.get(i).equals(list.get(i - 1))) { // Se ejecuta n - 1 veces
+        for (int i = 1; i < n; i++) { 
+            if (list.get(i).equals(list.get(i - 1))) { 
                 result.add(list.get(i));
             }
         }
@@ -74,8 +74,8 @@ public class Ejercicio2 {
         System.out.println("Digite la palabra:");
         String word=sc.nextLine();
         int contador=0;
-        for (int h = 0; h<word.length(); h++){ // Se ejecuta n veces
-            if (word.charAt(h) == word.charAt((word.length()-1)-h)){ // Se ejecuta n - 1 veces
+        for (int h = 0; h<word.length(); h++){ 
+            if (word.charAt(h) == word.charAt((word.length()-1)-h)){ 
                 contador+=1;
             } else {
                 contador +=2;
@@ -121,8 +121,8 @@ public class Ejercicio3 {
     }
     public static int bitCounter(String bits) {
         int bitcounter = 0;
-        for (int i = 0; i < bits.length(); i++) { // Se ejecuta n veces
-            if (bits.charAt(i)=='1') { // Se ejecuta n - 1 veces
+        for (int i = 0; i < bits.length(); i++) { 
+            if (bits.charAt(i)=='1') { 
                 bitcounter++;
             }
         }
@@ -150,7 +150,7 @@ $T(n)= 3n+6 $
 
 ---
 
-# Análisis de Complejidad Temporal 
+# Análisis de Complejidad Temporal
 
 ## Enunciado
 
@@ -236,3 +236,123 @@ Para $n \geq 1$, tomamos $c = 9$, $n_0 = 1$, por lo que:
 $T(n) = O(n)$
 
 ---
+
+Análisis de la complejidad espacial.
+
+---
+
+## **Algoritmo 1 (Búsqueda de Números Repetidos)**
+
+```java
+public class Ejercicio1 {
+    public static void main(String[] args) {
+        Scanner rd = new Scanner(System.in);
+        String input = rd.nextLine(); // numbers separated by ,
+        String[] inputArray = input.split(",");
+        List<Integer> numbers = new ArrayList<>();
+        for (String s : inputArray) {
+            numbers.add(Integer.parseInt(s.trim()));
+        }
+        Set<Integer> repeatedNumbers = findRepeatedValues(numbers);
+        System.out.println(repeatedNumbers);
+    }
+
+    private static Set<Integer> findRepeatedValues(List<Integer> list) {
+        Set<Integer> result = new HashSet<>();
+        int n = list.size();
+        for (int i = 1; i < n; i++) { 
+            if (list.get(i).equals(list.get(i - 1))) { 
+                result.add(list.get(i));
+            }
+        }
+        return result;
+    }
+}
+```
+
+| Variable / Estructura                | Cantidad de valores atómicos | Tamaño de 1 valor atómico |
+| ------------------------------------ | ----------------------------- | --------------------------- |
+| String:`input`                     | n                             | 16 bits por carácter       |
+| String[]:`inputArray`              | n                             | 16 bits por carácter       |
+| List`<Integer>`: `numbers`       | n                             | 32 bits por entero          |
+| String:`s`                         | 1                             | 16 bits por carácter       |
+| Set`<Integer>`:`repeatedNumbers` | n                             | 32 bits por entero          |
+| Set`<Integer>`: `result`         | n                             | 32 bits por entero          |
+| int:`n`                            | 1                             | 32 bits                     |
+| int:`i`                            | 1                             | 32 bits                     |
+
+**Complejidad Espacial Total** = **String** input + **String[]** inputArray + **List`<Integer>`** numbers + **Set`<Integer>`** repeatedNumbers + **int** n + **int** i
+
+$=O(n) + O(n) + O(n) + O(1) + O(n) + O(n) + O(1) + O(1)= O(5n + 3)$
+$O(5n + 3)=O(n)$
+
+## **Algoritmo 2 (Verificación de Palíndromo)**
+
+```java
+public class Ejercicio2 {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite la palabra:");
+        String word=sc.nextLine();
+        int contador=0;
+        for (int h = 0; h<word.length(); h++){
+            if (word.charAt(h) == word.charAt((word.length()-1)-h)){ 
+                contador+=1;
+            } else {
+                contador +=2;
+            }
+        }
+        if (contador==word.length()){
+            System.out.println("Palindromo");
+        } else {
+            System.out.println("No es palindromo");
+        }
+    }
+}
+```
+
+| Variable / Estructura | Cantidad de valores atómicos | Tamaño de 1 valor atómico |
+| --------------------- | ----------------------------- | --------------------------- |
+| String:`word`       | n                             | 16 bits por carácter       |
+| int:`contador`      | 1                             | 32 bits                     |
+| int:`h`             | 1                             | 32 bits                     |
+
+**Complejidad Espacial Total** = **String** word + **int** contador + **int** h
+
+$=O(n) + O(1) + O(1)= O(2 + n)$
+$O(2 + n)=O(n)$
+
+---
+
+## **Algoritmo 3 (Contador de Bits)**
+
+```java
+public class Ejercicio3 {
+    public static void main(String[] args) {
+        Scanner rd = new Scanner(System.in);
+        String bitString = rd.nextLine();
+        System.out.println(bitCounter(bitString));
+    }
+    public static int bitCounter(String bits) {
+        int bitcounter = 0;
+        for (int i = 0; i < bits.length(); i++) { 
+            if (bits.charAt(i)=='1') { 
+                bitcounter++;
+            }
+        }
+        return bitcounter;
+    }
+}
+```
+
+| Variable / Estructura | Cantidad de valores atómicos | Tamaño de 1 valor atómico |
+| --------------------- | ----------------------------- | --------------------------- |
+| String:`bitString`  | n                             | 16 bits por caracter        |
+| int:`bitcounter`    | 1                             | 32 bits                     |
+| int:`i`             | 1                             | 32 bits                     |
+| String:`bits`       | n                             | 16 bits por caracter        |
+
+**Complejidad Espacial Total** = **String** bitString + **int** bitCounter + **int** i + **String** bits
+
+$=O(n) + O(1) + O(1) + O(n) = O(2n + 2)$
+$O(2n + 2) = O(n)$

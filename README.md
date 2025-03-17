@@ -284,6 +284,7 @@ public class Ejercicio1 {
 **Complejidad Espacial Total** = **String** input + **String[]** inputArray + **List`<Integer>`** numbers + **Set`<Integer>`** repeatedNumbers + **int** n + **int** i
 
 $=O(n) + O(n) + O(n) + O(1) + O(n) + O(n) + O(1) + O(1)= O(5n + 3)$
+
 $O(5n + 3)=O(n)$
 
 ## **Algoritmo 2 (Verificación de Palíndromo)**
@@ -320,6 +321,7 @@ public class Ejercicio2 {
 **Complejidad Espacial Total** = **String** word + **int** contador + **int** h
 
 $=O(n) + O(1) + O(1)= O(2 + n)$
+
 $O(2 + n)=O(n)$
 
 ---
@@ -355,4 +357,5 @@ public class Ejercicio3 {
 **Complejidad Espacial Total** = **String** bitString + **int** bitCounter + **int** i + **String** bits
 
 $=O(n) + O(1) + O(1) + O(n) = O(2n + 2)$
+
 $O(2n + 2) = O(n)$
